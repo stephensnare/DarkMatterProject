@@ -1,5 +1,7 @@
+from point import Point
+
 class Node(object):
-    def __init__(self, side_length: float, center: (float,float,float), depth: int = 1):
+    def __init__(self, side_length: float, center: tuple[float,float,float], depth: int = 1):
         self.side_length = side_length
         self.depth = depth
         self.center = center
