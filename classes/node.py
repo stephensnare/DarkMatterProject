@@ -2,11 +2,7 @@ from classes.point import Point
 ## Careful of boundary cases; probably just do a coin flip to choose the side it falls on
 
 class Node(object):
-<<<<<<< HEAD
     def __init__(self, side_length: float, center: tuple[float,float,float], depth: int = 1):
-=======
-    def __init__(self, side_length: float, center: (int,int,int), depth: int = 1):
->>>>>>> 5b1ce1841375ae0c734ade3d03b6b4fd1b0021fe
         self.side_length = side_length
         self.depth = depth
         self.center = center
