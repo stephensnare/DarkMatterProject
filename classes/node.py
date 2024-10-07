@@ -2,7 +2,11 @@ from classes.point import Point
 
 
 class Node(object):
+<<<<<<< HEAD
     def __init__(self, side_length: float, center: tuple[float,float,float], depth: int = 1):
+=======
+    def __init__(self, side_length: float, center: (int,int,int), depth: int = 1):
+>>>>>>> 5b1ce1841375ae0c734ade3d03b6b4fd1b0021fe
         self.side_length = side_length
         self.depth = depth
         self.center = center
@@ -25,10 +29,10 @@ class Node(object):
             self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
             self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
             self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
-            self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth - 1)
-            self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth - 1)
-            self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth - 1)
-            self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth - 1)
+            self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
+            self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+            self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+            self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
 
         def add_point(point: Point):
             print("adding point")
