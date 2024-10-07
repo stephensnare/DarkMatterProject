@@ -1,7 +1,9 @@
 class Node(object):
-    def __init__(self, side_length: float, depth: int = 0):
+    def __init__(self, side_length: float, center: (float,float,float), depth: int = 1):
         self.side_length = side_length
         self.depth = depth
+        self.center = center
+        self.population = 0
 
 
         # Define children nodes with default values as None
@@ -16,10 +18,16 @@ class Node(object):
 
 
         def split():
-            print("splitting")
+            self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+            self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+            self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+            self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+            self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth - 1)
+            self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth - 1)
+            self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth - 1)
+            self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth - 1)
 
-        def calculate_center():
-            print("calculating center")
+        def add_point(point: Point):
 
 
 
