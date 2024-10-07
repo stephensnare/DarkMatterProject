@@ -52,14 +52,21 @@ class Node(object):
 
 
     def add_point(self, point):
+        
         if self.population == 0:
             self.point = point
-            self.population += 1
+            
         elif self.population == 1:
             point1 = point
             point2 = self.point
             self.split()
+            self.place_point(point1)
+            self.place_point(point2)
 
+        else:
+            self.place_point(point)
+
+        self.population += 1
 
 
 
