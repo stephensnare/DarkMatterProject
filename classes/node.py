@@ -1,3 +1,6 @@
+from classes.point import Point
+
+
 class Node(object):
     def __init__(self, side_length: float, center: (float,float,float), depth: int = 1):
         self.side_length = side_length
@@ -28,6 +31,7 @@ class Node(object):
             self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth - 1)
 
         def add_point(point: Point):
+            print("adding point")
 
 
 

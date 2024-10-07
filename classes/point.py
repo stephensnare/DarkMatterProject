@@ -1,7 +1,7 @@
 import numpy as np
 
 class Point(object):
-    def __init__(self, x: float, y: float, z: float) -> None:
-        self.x = np.random.random()
-        self.y = np.random.random()
-        self.z = np.random.random()
+    def __init__(self, x: float =np.random.random(), y: float=np.random.random(), z: float=np.random.random()) -> None:
+        self.x = x
+        self.y = y
+        self.z = z
