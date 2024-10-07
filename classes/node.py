@@ -21,15 +21,15 @@ class Node(object):
         self.brb: 'Node' = None  # Bottom-Right-Back child
 
 
-        def split():
-            self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
-            self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
-            self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
-            self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
-            self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
-            self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
-            self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
-            self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
+    def split(self):
+        self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+        self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+        self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+        self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+        self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
+        self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+        self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+        self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
 
 
     def place_point(self, point: Point):

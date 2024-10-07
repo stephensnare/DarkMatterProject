@@ -22,7 +22,6 @@ def generate(numPoints, debug=0):
 
         j = 0
         while j < i:
-            # print(j)
             # If any of the coordinates are the same as the any of the previous points
             if (points[i].x != points[j].x) and (points[i].y != points[j].y) and (points[i].z != points[j].z):
                 # Do nothing and compare next point
@@ -32,7 +31,6 @@ def generate(numPoints, debug=0):
                 # Start the 2nd loop over, generate a new point and compare again
                 j = 0
                 points[i] = Point()
-                # print(points[i].x)
 
         # For debugging
         if debug == 1:

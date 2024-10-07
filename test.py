@@ -7,7 +7,7 @@
     # Make fresh terminal (?)
     # git pull
 
-# Restore file
+# Restore file to previous save state
     # git restore [filepath to the file you want to restore]
 
 print("hello")
