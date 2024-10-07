@@ -9,7 +9,6 @@ class Node(object):
         self.population = 0
         self.point: Point or None = None
 
-
         # Define children nodes with default values as None
         self.tlf: 'Node' = None  # Top-Left-Front child
         self.trf: 'Node' = None  # Top-Right-Front child
@@ -20,46 +19,45 @@ class Node(object):
         self.blb: 'Node' = None  # Bottom-Left-Back child
         self.brb: 'Node' = None  # Bottom-Right-Back child
 
-
-        def split():
-            self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
-            self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
-            self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
-            self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
-            self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
-            self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
-            self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
-            self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
-
+    def split(self):
+        self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+        self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+        self.blf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
+        self.brf = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
+        self.trb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
+        self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+        self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
+        self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
 
     def place_point(self, point: Point):
-        if point.x<self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
+        if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.blb.add_point(point)
-        if point.x>self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
+        if point.x>self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.tlb.add_point(point)
-        if point.x<self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
+        if point.x<self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.brb.add_point(point)
-        if point.x>self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
+        if point.x>self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.trb.add_point(point)
-        if point.x<self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
+        if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.blf.add_point(point)
-        if point.x<self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
+        if point.x<self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.brf.add_point(point)
-        if point.x>self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
+        if point.x>self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.trf.add_point(point)
-        if point.x>self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
+        if point.x>self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.tlf.add_point(point)
-
 
     def add_point(self, point):
         
         if self.population == 0:
             self.point = point
+            print(f"added point at depth = {self.depth}")
             
         elif self.population == 1:
             point1 = point
             point2 = self.point
             self.split()
+            self.point = None
             self.place_point(point1)
             self.place_point(point2)
 
@@ -67,11 +65,3 @@ class Node(object):
             self.place_point(point)
 
         self.population += 1
-
-
-
-
-
-
-
-

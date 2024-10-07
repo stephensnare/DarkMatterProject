@@ -18,7 +18,7 @@ def generate(numPoints, debug=0):
     while i < numPoints:
         # Creates a new point
         # Currently 1, 1, 1 for testing
-        points[i] = Point(1.0, 1.0, 1.0)
+        points[i] = Point(.9, .9, .9)
 
         j = 0
         while j < i:
@@ -41,5 +41,7 @@ def generate(numPoints, debug=0):
             print(f'points[{i}].z: ',points[i].z)
 
         i += 1
+
+    return points
 
 main()
