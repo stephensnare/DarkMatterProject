@@ -1,5 +1,5 @@
 from classes.point import Point
-
+## Careful of boundary cases; probably just do a coin flip to choose the side it falls on
 
 class Node(object):
     def __init__(self, side_length: float, center: (int,int,int), depth: int = 1):
