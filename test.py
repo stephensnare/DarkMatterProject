@@ -4,7 +4,7 @@
     # git push origin master
 
 # Pulling from GitHub
-    # Make  fresh terminal (?)
+    # Make fresh terminal (?)
     # git pull
 
 print("hello")
