@@ -33,21 +33,21 @@ class Node(object):
 
 
     def place_point(self, point: Point):
-        if point[0]<self.center[0]*2**self.depth and point[1]<self.center[1]*2**self.depth and point[2]<self.center[2]*2**self.depth:
+        if point.x<self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
             self.blb.add_point(point)
-        if point[0]>self.center[0]*2**self.depth and point[1]<self.center[1]*2**self.depth and point[2]<self.center[2]*2**self.depth:
+        if point.x>self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
             self.tlb.add_point(point)
-        if point[0]<self.center[0]*2**self.depth and point[1]>self.center[1]*2**self.depth and point[2]<self.center[2]*2**self.depth:
+        if point.x<self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
             self.brb.add_point(point)
-        if point[0]>self.center[0]*2**self.depth and point[1]>self.center[1]*2**self.depth and point[2]<self.center[2]*2**self.depth:
+        if point.x>self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z<self.center[2]*2**self.depth:
             self.trb.add_point(point)
-        if point[0]<self.center[0]*2**self.depth and point[1]<self.center[1]*2**self.depth and point[2]>self.center[2]*2**self.depth:
+        if point.x<self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
             self.blf.add_point(point)
-        if point[0]<self.center[0]*2**self.depth and point[1]>self.center[1]*2**self.depth and point[2]>self.center[2]*2**self.depth:
+        if point.x<self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
             self.brf.add_point(point)
-        if point[0]>self.center[0]*2**self.depth and point[1]>self.center[1]*2**self.depth and point[2]>self.center[2]*2**self.depth:
+        if point.x>self.center[0]*2**self.depth and point.y>self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
             self.trf.add_point(point)
-        if point[0]>self.center[0]*2**self.depth and point[1]<self.center[1]*2**self.depth and point[2]>self.center[2]*2**self.depth:
+        if point.x>self.center[0]*2**self.depth and point.y<self.center[1]*2**self.depth and point.z>self.center[2]*2**self.depth:
             self.tlf.add_point(point)
 
 
