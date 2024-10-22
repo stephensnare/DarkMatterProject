@@ -17,20 +17,7 @@ def generate(numPoints, debug=0):
     i = 0
     while i < numPoints:
         # Creates a new point
-        # Currently 1, 1, 1 for testing
         points[i] = Point(None, None, None, [0, 0, 0])
-
-        j = 0
-        while j < i:
-            # If any of the coordinates are the same as the any of the previous points
-            if (points[i].x != points[j].x) and (points[i].y != points[j].y) and (points[i].z != points[j].z):
-                # Do nothing and compare next point
-                j += 1
-            # If some values ARE the same
-            else:
-                # Start the 2nd loop over, generate a new point and compare again
-                j = 0
-                points[i] = Point(None, None, None, [0, 0, 0])
 
         # For debugging
         if debug == 1:

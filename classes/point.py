@@ -9,6 +9,6 @@ class Point(object):
         self.z = z if z is not None else np.random.random()
         self.vel = vel if vel is not None else [np.random.random(), np.random.random(), np.random.random()]
 
-        self.vel[0] = vel[0]
-        self.vel[1] = vel[1]
-        self.vel[2] = vel[2]
+        self.velx = vel[0]
+        self.vely = vel[1]
+        self.velz = vel[2]
