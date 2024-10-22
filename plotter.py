@@ -81,7 +81,7 @@ def plot(points, node):
     ax.set_xlim([0, 1])
     ax.set_ylim([0,1])
     ax.set_zlim([0, 1])
-    ax.set_box_aspect([1, 1, 1])  # Aspect ratio is 1:1:1
+    ax.set_box_aspect([1,1,1])  # Aspect ratio is 1:1:1
 
     plt.show()
 
@@ -111,8 +111,11 @@ def drawCube(node: Node, ax):
     side_length = node.side_length
 
     # Calculate the vertices of the cube
-    r = side_length / 2
+    r = side_length
     cx, cy, cz = center
+    cx = cx/(2**node.depth)
+    cy = cy/(2**node.depth)
+    cz = cz/(2**node.depth)
 
     # Calculate the vertices of the cube
     points = np.array([[cx - r, cy - r, cz - r],  # 0
