@@ -14,12 +14,25 @@
 import generatePoints as gp
 from classes import *
 from classes.node import Node
+from plotter import plot
 
-points = gp.generate(30,1)
+### Create and Place Points ###
+def createAndPlace():
+    points = gp.generate(30,1)
 
-node = Node(1,(1,1,1),1)
+    node = Node(1,(1,1,1),0)
 
-for i in range(len(points)):
-    print(i)
-    point = points[i]
-    node.add_point(point)
+    for i in range(len(points)):
+        # print(i)
+        point = points[i]
+        node.add_point(point)
+
+    return points, node
+
+
+def main():
+    points, node = createAndPlace()
+    plot(points, node)
+
+
+main()
