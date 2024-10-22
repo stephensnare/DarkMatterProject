@@ -16,12 +16,11 @@ from classes import *
 from classes.node import Node
 from plotter import plot
 
-
 ### Create and Place Points ###
 def createAndPlace():
     points = gp.generate(30,1)
 
-    node = Node(1,(1,1,1),1)
+    node = Node(1,(1,1,1),0)
 
     for i in range(len(points)):
         # print(i)
