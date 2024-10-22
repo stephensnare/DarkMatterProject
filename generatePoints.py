@@ -18,7 +18,7 @@ def generate(numPoints, debug=0):
     while i < numPoints:
         # Creates a new point
         # Currently 1, 1, 1 for testing
-        points[i] = Point(.9, .9, .9)
+        points[i] = Point(None, None, None, [0, 0, 0])
 
         j = 0
         while j < i:
@@ -30,13 +30,14 @@ def generate(numPoints, debug=0):
             else:
                 # Start the 2nd loop over, generate a new point and compare again
                 j = 0
-                points[i] = Point()
+                points[i] = Point(None, None, None, [0, 0, 0])
 
         # For debugging
         if debug == 1:
             print(f'points[{i}].x: ',points[i].x)
             print(f'points[{i}].y: ',points[i].y)
             print(f'points[{i}].z: ',points[i].z)
+            print(f'points[{i}].vel: ', points[i].vel)
 
         i += 1
 
