@@ -1,6 +1,7 @@
 import numpy as np
 from classes.point import Point
 from classes.node import Node
+from classes.psuedopoint import psuedoPoint
 import generatePoints as gp
 
 # def main():
@@ -26,6 +27,12 @@ def CoM_tracker(node):
     # if node is 0 pop ignore
     # if node is 1 pop assign point's postion as CoM
     if node:
+        if node.population == 0:
+            pass
+        if node.population == 1:
+            node.psuedopoint = psuedoPoint(node.point.x, node.point.y, node.point.z, 1)
+            node.psuedopoint.addPointPointer(node.point)
+            pass
 
         CoM_tracker(node.tlf)
         CoM_tracker(node.trf)
@@ -35,6 +42,31 @@ def CoM_tracker(node):
         CoM_tracker(node.brf)
         CoM_tracker(node.blb)
         CoM_tracker(node.brb)
+            
+        
+        if node.population > 1:
+            psuedo = [node.tlf.psuedopoint, node.trf.psuedopoint, node.tlb.psuedopoint,
+                      node.trb.psuedopoint, node.blf.psuedopoint, node.brf.psuedopoint,
+                      node.blb.psuedopoint, node.brb.psuedopoint]
+            x = np.zeros(len(psuedo))
+            y = np.zeros(len(psuedo))
+            z = np.zeros(len(psuedo))
+            m = np.zeros(len(psuedo))
+            xp, yp, zp = 0,0,0
+            for i in range(len(psuedo)):
+                x[i] = psuedo[i].x
+                y[i] = psuedo[i].y
+                z[i] = psuedo[i].z
+                m[i] = psuedo[i].m
+                xp += x[i] * m[i]
+                yp += y[i] * m[i]
+                zp += z[i] * m[i]
+            xp /= sum(m)
+            yp /= sum(m)
+            zp /= sum(m)
+
+            node.psuedopoint = psuedoPoint(xp,yp,zp,sum(m))
+
         print(node.depth)
 
     # if node is >1 pop, try again for each child cell
