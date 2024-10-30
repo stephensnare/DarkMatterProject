@@ -1,5 +1,4 @@
 from classes.node import Node
-from classes.point import Point
 
 
 def depthFirstIterative(node, nodesAll):
@@ -7,7 +6,6 @@ def depthFirstIterative(node, nodesAll):
         return None
     
     nodesAll.append(node.depth)
-
 
     depthFirstIterative(node.tlf, nodesAll)
     depthFirstIterative(node.trf, nodesAll)

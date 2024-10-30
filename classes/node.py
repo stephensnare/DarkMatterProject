@@ -5,7 +5,7 @@ from classes.psuedopoint import PsuedoPoint
 ## Careful of boundary cases; probably just do a coin flip to choose the side it falls on
 
 class Node(object):
-    def __init__(self, side_length: float, center: tuple[float,float,float], depth: int = 1):
+    def __init__(self, side_length: float, center: tuple[float,float,float], depth: int=1):
         self.side_length = side_length
         self.depth = depth
         self.center = center

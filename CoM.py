@@ -15,6 +15,7 @@ def main():
         node.add_point(point)
     # run the tracker:
     CoM_tracker(points, node)
+    
 
 def CoM_tracker(points, node):
     # find max depth:
