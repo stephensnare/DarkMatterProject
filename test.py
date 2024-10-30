@@ -18,9 +18,9 @@ from plotter import plot
 
 ### Create and Place Points ###
 def createAndPlace():
-    points = gp.generate(5,1)
+    points = gp.generate(10,1)
 
-    node = Node(1,(1/2,1/2,1/2),0)
+    node = Node(.5,(1,1,1),1)
 
     for i in range(len(points)):
         # print(i)

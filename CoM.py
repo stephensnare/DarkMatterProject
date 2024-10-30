@@ -22,12 +22,14 @@ def CoM_tracker(points, node):
     # work up depth assigning CoM at each step by averageing the CoM of child cells
 
     ############################----or----################################
-    # if node is 0 pop ignore
-    # if node is 1 pop assign point's postion as CoM
+    # if node is 0 pop, ignore
+    # if node is 1 pop, assign point's postion as CoM
 
-    # if node is >1 pop try again for each child cell
+    # if node is >1 pop, try again for each child cell
         # once we iterate to the 1 pop cell
 
     # how do we then go back up and assign CoM to boxes we skipped?
+
+    pass
     
 
