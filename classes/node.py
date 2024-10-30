@@ -9,6 +9,9 @@ class Node(object):
         self.population = 0
         self.point: Point or None = None
 
+        self.parent: Node or None = None
+
+
         # Define children nodes with default values as None
         self.tlf: 'Node' = None  # Top-Left-Front child
         self.trf: 'Node' = None  # Top-Right-Front child
@@ -28,24 +31,31 @@ class Node(object):
         self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
         self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
         self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
-
     def place_point(self, point: Point):
         if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.blb.add_point(point)
+            self.blb.parent = self
         if point.x>self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.tlb.add_point(point)
+            self.tlb.parent = self
         if point.x<self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.brb.add_point(point)
+            self.brb.parent = self
         if point.x>self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.trb.add_point(point)
+            self.trb.parent = self
         if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.blf.add_point(point)
+            self.blf.parent = self
         if point.x<self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.brf.add_point(point)
+            self.brf.parent = self
         if point.x>self.center[0]/2**self.depth and point.y>self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.trf.add_point(point)
+            self.trf.parent = self
         if point.x>self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z>self.center[2]/2**self.depth:
             self.tlf.add_point(point)
+            self.tlf.parent = self
 
     def add_point(self, point):
         
