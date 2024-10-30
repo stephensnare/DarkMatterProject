@@ -20,6 +20,7 @@ def CoM_tracker(points, node):
     # find max depth:
 
     # work up depth assigning CoM at each step by averageing the CoM of child cells
+    
 
     ############################----or----################################
     # if node is 0 pop, ignore
