@@ -15,6 +15,7 @@ from classes import *
 from classes.node import Node
 from plotter import plot
 from CoM import CoM_tracker
+from depthFirst import depthFirst as df
 
 ### Create and Place Points ###
 def createAndPlace():
@@ -33,7 +34,9 @@ def createAndPlace():
 def main():
     points, node = createAndPlace()
     CoM_tracker(node)
+    allDepths, maxDepth = df(node)
+    print(maxDepth)
     plot(points, node)
 
 
-# main()
+main()

@@ -1,6 +1,5 @@
 from classes.node import Node
 from classes.point import Point
-import testFunc
 
 
 def depthFirstIterative(node, nodesAll):
@@ -22,11 +21,8 @@ def depthFirstIterative(node, nodesAll):
     return nodesAll
 
 
-def depthFirst():
-    points, node = testFunc.createAndPlace()
+def depthFirst(node):
     nodesAll = depthFirstIterative(node, [])
     deepestNode = max(nodesAll)
 
     return nodesAll, deepestNode
-
-print(depthFirst())
