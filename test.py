@@ -15,6 +15,7 @@ import generatePoints as gp
 from classes import *
 from classes.node import Node
 from plotter import plot
+from CoM import CoM_tracker
 
 ### Create and Place Points ###
 def createAndPlace():
@@ -32,6 +33,7 @@ def createAndPlace():
 
 def main():
     points, node = createAndPlace()
+    CoM_tracker(node)
     plot(points, node)
 
 
