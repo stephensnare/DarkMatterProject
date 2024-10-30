@@ -1,7 +1,7 @@
 import numpy as np
 from classes.point import Point
 from classes.node import Node
-from classes.psuedopoint import psuedoPoint
+from classes.psuedopoint import PsuedoPoint
 import generatePoints as gp
 
 # def main():
@@ -30,7 +30,7 @@ def CoM_tracker(node):
         if node.population == 0:
             pass
         if node.population == 1:
-            node.psuedopoint = psuedoPoint(node.point.x, node.point.y, node.point.z, 1)
+            node.psuedopoint = PsuedoPoint(node.point.x, node.point.y, node.point.z, 1)
             node.psuedopoint.addPointPointer(node.point)
             pass
 
@@ -65,7 +65,7 @@ def CoM_tracker(node):
             yp /= sum(m)
             zp /= sum(m)
 
-            node.psuedopoint = psuedoPoint(xp,yp,zp,sum(m))
+            node.psuedopoint = PsuedoPoint(xp,yp,zp,sum(m))
 
         print(node.depth)
 
