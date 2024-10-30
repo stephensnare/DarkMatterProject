@@ -20,8 +20,10 @@ def CoM_tracker(node):
     # find max depth:
 
     # work up depth assigning CoM at each step by averageing the CoM of child cells
+    
 
     ############################----or----################################
+<<<<<<< HEAD
     # if node is 0 pop ignore
     # if node is 1 pop assign point's postion as CoM
     if node:
@@ -35,10 +37,16 @@ def CoM_tracker(node):
         CoM_tracker(node.blb)
         CoM_tracker(node.brb)
         print(node.depth)
+=======
+    # if node is 0 pop, ignore
+    # if node is 1 pop, assign point's postion as CoM
+>>>>>>> 333d8df4e7bb619aca709d521a68c1ce8fdea19a
 
-    # if node is >1 pop try again for each child cell
+    # if node is >1 pop, try again for each child cell
         # once we iterate to the 1 pop cell
 
     # how do we then go back up and assign CoM to boxes we skipped?
+
+    pass
     
 

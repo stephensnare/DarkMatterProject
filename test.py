@@ -5,7 +5,6 @@
         # git push
 
     # Pulling from GitHub
-        # Make fresh terminal (?)
         # git pull
 
     # Restore file to previous save state
@@ -16,10 +15,11 @@ from classes import *
 from classes.node import Node
 from plotter import plot
 from CoM import CoM_tracker
+from depthFirst import depthFirst as df
 
 ### Create and Place Points ###
 def createAndPlace():
-    points = gp.generate(15,1)
+    points = gp.generate(10,0)
 
     node = Node(.5,(1,1,1),1)
 
@@ -34,6 +34,8 @@ def createAndPlace():
 def main():
     points, node = createAndPlace()
     CoM_tracker(node)
+    allDepths, maxDepth = df(node)
+    print(maxDepth)
     plot(points, node)
 
 
