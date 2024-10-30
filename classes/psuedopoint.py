@@ -11,7 +11,6 @@ class PsuedoPoint(Point):
         self.pointPointers = []
 
 
-
     def addPointPointer(self, point: Point):
         self.pointPointers.append(point)
 

@@ -10,11 +10,11 @@ class Node(object):
         self.depth = depth
         self.center = center
         self.population = 0
-        self.point: Point or None = None
+        self.point: Point | None = None
 
-        self.psuedoPoint: PsuedoPoint or None = None
+        self.psuedoPoint: PsuedoPoint | None = None
 
-        self.parent: Node or None = None
+        self.parent: Node | None = None
 
 
         # Define children nodes with default values as None
