@@ -8,3 +8,13 @@ class PsuedoPoint(Point):
         self.y = y
         self.z = z
         self.m = m
+        self.pointPointers = []
+
+
+
+    def addPointPointer(self, point: Point):
+        self.pointPointers.append(point)
+
+
+    def points(self):
+        return self.pointPointers
