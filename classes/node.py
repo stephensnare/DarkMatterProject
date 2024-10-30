@@ -12,7 +12,7 @@ class Node(object):
         self.population = 0
         self.point: Point | None = None
 
-        self.psuedoPoint: PsuedoPoint | None = None
+        self.psuedoPoint: PsuedoPoint = PsuedoPoint(0, 0, 0, 0)
 
         self.parent: Node | None = None
 
