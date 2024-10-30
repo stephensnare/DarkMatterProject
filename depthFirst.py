@@ -5,7 +5,7 @@ import testFunc
 
 def depthFirstIterative(node, nodesAll):
     if node is None:
-        return
+        return None
     
     nodesAll.append(node.depth)
 
@@ -28,3 +28,5 @@ def depthFirst():
     deepestNode = max(nodesAll)
 
     return nodesAll, deepestNode
+
+print(depthFirst())

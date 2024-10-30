@@ -5,7 +5,6 @@
         # git push
 
     # Pulling from GitHub
-        # Make fresh terminal (?)
         # git pull
 
     # Restore file to previous save state
