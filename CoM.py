@@ -30,8 +30,8 @@ def CoM_tracker(node):
         if node.population == 0:
             pass
         if node.population == 1:
-            node.psuedopoint = PsuedoPoint(node.point.x, node.point.y, node.point.z, 1)
-            node.psuedopoint.addPointPointer(node.point)
+            node.psuedoPoint = PsuedoPoint(node.point.x, node.point.y, node.point.z, 1)
+            node.psuedoPoint.addPointPointer(node.point)
             pass
 
         CoM_tracker(node.tlf)
@@ -45,9 +45,9 @@ def CoM_tracker(node):
             
         
         if node.population > 1:
-            psuedo = [node.tlf.psuedopoint, node.trf.psuedopoint, node.tlb.psuedopoint,
-                      node.trb.psuedopoint, node.blf.psuedopoint, node.brf.psuedopoint,
-                      node.blb.psuedopoint, node.brb.psuedopoint]
+            psuedo = [node.tlf.psuedoPoint, node.trf.psuedoPoint, node.tlb.psuedoPoint,
+                      node.trb.psuedoPoint, node.blf.psuedoPoint, node.brf.psuedoPoint,
+                      node.blb.psuedoPoint, node.brb.psuedoPoint]
             x = np.zeros(len(psuedo))
             y = np.zeros(len(psuedo))
             z = np.zeros(len(psuedo))
@@ -65,7 +65,7 @@ def CoM_tracker(node):
             yp /= sum(m)
             zp /= sum(m)
 
-            node.psuedopoint = PsuedoPoint(xp,yp,zp,sum(m))
+            node.psuedoPoint = PsuedoPoint(xp,yp,zp,sum(m))
 
         print(node.depth)
 
