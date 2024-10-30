@@ -1,4 +1,7 @@
 from classes.point import Point
+from classes.psuedopoint import PsuedoPoint
+
+
 ## Careful of boundary cases; probably just do a coin flip to choose the side it falls on
 
 class Node(object):
@@ -8,6 +11,8 @@ class Node(object):
         self.center = center
         self.population = 0
         self.point: Point or None = None
+
+        self.psuedoPoint: PsuedoPoint or None = None
 
         self.parent: Node or None = None
 
