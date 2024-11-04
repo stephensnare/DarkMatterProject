@@ -5,3 +5,4 @@
 # total force and accelleration should be tracked and stored
 # itterate 2-5 for every other point
 
+#theta is side length of node over distance from center of mass
