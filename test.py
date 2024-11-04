@@ -24,7 +24,6 @@ def createAndPlace():
     node = Node(.5,(1,1,1),1)
 
     for i in range(len(points)):
-        # print(i)
         point = points[i]
         node.add_point(point)
 

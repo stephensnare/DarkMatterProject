@@ -62,11 +62,12 @@ class Node(object):
             self.tlf.add_point(point)
             self.tlf.parent = self
 
-    def add_point(self, point):
+    def add_point(self, point, debug=0):
         
         if self.population == 0:
             self.point = point
-            print(f"added point at depth = {self.depth}")
+            if debug == 1:
+                print(f"added point at depth = {self.depth}")
             
         elif self.population == 1:
             point1 = point
