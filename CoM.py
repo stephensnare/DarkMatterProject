@@ -4,32 +4,12 @@ from classes.node import Node
 from classes.psuedopoint import PsuedoPoint
 import generatePoints as gp
 
-# def main():
-#     # initalize everything
-#     points = gp.generate(30,1)
-
-#     node = Node(1,(1,1,1),1)
-
-#     for i in range(len(points)):
-#         print(i)
-#         point = points[i]
-#         node.add_point(point)
-#     # run the tracker:
-#     CoM_tracker(points, node)
-
 def CoM_tracker(node):
-    # find max depth:
 
-    # work up depth assigning CoM at each step by averageing the CoM of child cells
-    
-
-    ############################----or----################################
-    # if node is 0 pop ignore
-    # if node is 1 pop assign point's postion as CoM
     if node:
-        if node.population == 0:
+        if node.population == 0: #ignore
             pass
-        if node.population == 1:
+        if node.population == 1: #assign point as Psuedopoint
             node.psuedoPoint = PsuedoPoint(node.point.x, node.point.y, node.point.z, 1)
             node.psuedoPoint.addPointPointer(node.point)
             pass
@@ -44,7 +24,7 @@ def CoM_tracker(node):
         CoM_tracker(node.brb)
             
         
-        if node.population > 1:
+        if node.population > 1: #find CoM of psuedopoints
             psuedo = [node.tlf.psuedoPoint, node.trf.psuedoPoint, node.tlb.psuedoPoint,
                       node.trb.psuedoPoint, node.blf.psuedoPoint, node.brf.psuedoPoint,
                       node.blb.psuedoPoint, node.brb.psuedoPoint]
@@ -69,10 +49,6 @@ def CoM_tracker(node):
 
         print(node.depth)
 
-    # if node is >1 pop, try again for each child cell
-        # once we iterate to the 1 pop cell
-
-    # how do we then go back up and assign CoM to boxes we skipped?
 
     pass
     
