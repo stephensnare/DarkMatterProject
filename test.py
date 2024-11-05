@@ -16,10 +16,11 @@ from classes.node import Node
 from plotter import plot
 from CoM import CoM_tracker
 from depthFirst import depthFirst as df
+import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(loc):
-    points = gp.generate(10, loc)
+    points = gp.generate(32, loc)
 
     node = Node(.5,(1,1,1),1)
 
@@ -38,6 +39,8 @@ def main():
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
     plot((points_1, points_2), (node_1, node_2))
+
+    time = np.linspace(0, 100, 1)
 
 
 main()
