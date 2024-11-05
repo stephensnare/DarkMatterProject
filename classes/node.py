@@ -37,6 +37,7 @@ class Node(object):
         self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
         self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
     def place_point(self, point: Point):
+        self.psuedoPoint.addPointPointer(point)
         if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
             self.blb.add_point(point)
             self.blb.parent = self
