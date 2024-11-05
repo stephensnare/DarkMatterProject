@@ -32,9 +32,10 @@ def createAndPlace():
 
 def main():
     points, node = createAndPlace()
+    print(node.side_length)
     CoM_tracker(node)
     allDepths, maxDepth = df(node)
-    print(maxDepth)
+    # print(maxDepth)
     plot(points, node)
 
 

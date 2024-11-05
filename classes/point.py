@@ -8,7 +8,8 @@ class Point(object):
         self.y = y if y is not None else np.random.random()
         self.z = z if z is not None else np.random.random()
         self.vel = vel if vel is not None else [np.random.random(), np.random.random(), np.random.random()]
-
+        self.acc = [0,0,0]
         self.velx = vel[0]
         self.vely = vel[1]
         self.velz = vel[2]
+
