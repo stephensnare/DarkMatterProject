@@ -27,6 +27,7 @@ class Node(object):
         self.blb: 'Node' = None  # Bottom-Left-Back child
         self.brb: 'Node' = None  # Bottom-Right-Back child
 
+
     def split(self):
         self.trf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)+1, (self.center[2]*2)+1), self.depth + 1)
         self.tlf = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)+1), self.depth + 1)
@@ -36,8 +37,10 @@ class Node(object):
         self.tlb = Node(self.side_length/2, ((self.center[0]*2)+1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
         self.blb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)-1, (self.center[2]*2)-1), self.depth + 1)
         self.brb = Node(self.side_length/2, ((self.center[0]*2)-1, (self.center[1]*2)+1, (self.center[2]*2)-1), self.depth + 1)
+
+
     def place_point(self, point: Point):
-        if point.x<self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
+        if (point.x<self.center[0]/2**self.depth) and (point.y<self.center[1]/2**self.depth) and (point.z<self.center[2]/2**self.depth):
             self.blb.add_point(point)
             self.blb.parent = self
         if point.x>self.center[0]/2**self.depth and point.y<self.center[1]/2**self.depth and point.z<self.center[2]/2**self.depth:
@@ -62,8 +65,8 @@ class Node(object):
             self.tlf.add_point(point)
             self.tlf.parent = self
 
-    def add_point(self, point, debug=0):
-        
+
+    def add_point(self, point, debug=0):        
         if self.population == 0:
             self.point = point
             if debug == 1:

@@ -18,24 +18,29 @@ from CoM import CoM_tracker
 from depthFirst import depthFirst as df
 
 ### Create and Place Points ###
-def createAndPlace():
-    points = gp.generate(10,0)
+def createAndPlace(loc):
+    points = gp.generate(10, loc)
 
     node = Node(.5,(1,1,1),1)
 
     for i in range(len(points)):
-        point = points[i]
-        node.add_point(point)
+        node.add_point(points[i])
 
     return points, node
 
 
 def main():
-    points, node = createAndPlace()
-    CoM_tracker(node)
-    allDepths, maxDepth = df(node)
-    print(maxDepth)
-    plot(points, node)
+    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
+    points_1, node_1 = createAndPlace(0)
+    points_2, node_2 = createAndPlace(1)
+
+    # CoM_tracker(node)
+    # allDepths, maxDepth = df(node)
+    # print(maxDepth)
+    print(points_1[0].vel)
+    print(points_1[1].vel)
+    print(points_1[2].vel)
+    plot((points_1, points_2), (node_1, node_2))
 
 
 main()
