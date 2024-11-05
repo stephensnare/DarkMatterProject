@@ -8,11 +8,11 @@ def CoM_tracker(node):
 
     if node:
         if node.population == 0: #ignore
-            pass
+            return
         if node.population == 1: #assign point as Psuedopoint
             node.psuedoPoint = PsuedoPoint(node.point.x, node.point.y, node.point.z, 1)
-            node.psuedoPoint.addPointPointer(node.point)
-            pass
+            # node.psuedoPoint.addPointPointer(node.point)
+            return
 
         CoM_tracker(node.tlf)
         CoM_tracker(node.trf)
@@ -48,8 +48,9 @@ def CoM_tracker(node):
             node.psuedoPoint = PsuedoPoint(xp,yp,zp,sum(m))
 
         print(node.depth)
+        return
 
 
-    pass
+    return
     
 

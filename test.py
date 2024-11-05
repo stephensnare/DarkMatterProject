@@ -37,9 +37,6 @@ def main():
     # CoM_tracker(node)
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
-    print(points_1[0].vel)
-    print(points_1[1].vel)
-    print(points_1[2].vel)
     plot((points_1, points_2), (node_1, node_2))
 
 
