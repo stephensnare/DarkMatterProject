@@ -3,9 +3,8 @@
         # git add .
         # git commit -m "Enter a commit message"
         # git push
-import numpy as np
 
-# Pulling from GitHub
+    # Pulling from GitHub
         # git pull
 
     # Restore file to previous save state
@@ -17,6 +16,7 @@ from classes.node import Node
 from plotter import plot
 from CoM import CoM_tracker
 from depthFirst import depthFirst as df
+import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(n):
@@ -42,6 +42,8 @@ def main():
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
     plot(points, node)
+
+    time = np.linspace(0, 100, 1)
 
 
 main()
