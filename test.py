@@ -26,7 +26,7 @@ def createAndPlace(n):
     points_all = np.concatenate((points, points2))
 
 
-    node = Node(.5,(1,1,1),1)
+    node = Node(1,(1,1,1),1)
 
     for i in range(len(points_all)):
         node.add_point(points_all[i])

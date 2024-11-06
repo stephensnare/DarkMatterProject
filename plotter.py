@@ -55,7 +55,7 @@ def drawCube(node: Node, ax):
     side_length = node.side_length
 
     # Calculate the vertices of the cube
-    r = side_length
+    r = side_length / 2
     cx, cy, cz = center
     cx = cx / (2 ** node.depth)
     cy = cy / (2 ** node.depth)
