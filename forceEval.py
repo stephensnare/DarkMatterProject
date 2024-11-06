@@ -32,7 +32,7 @@ def passes_theta(point: Point, child: Node, theta):
         ry = abs(psuedo_y - py)
         rz = abs(psuedo_z - pz)
 
-        l = child.side_length * 2
+        l = child.side_length
         d = math.sqrt(rx ** 2 + ry ** 2 + rz ** 2)
 
         if l / d > theta:

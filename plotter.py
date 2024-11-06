@@ -7,25 +7,29 @@ import numpy as np
 
 
 ### 3D Plotting ###
-def plot(points, node):
+# node_toggle = False, nodes are disabled
+def plot(points, node, node_toggle:bool=False):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
     # Plot the points
-    for p in points:
-        ax.scatter(p.x, p.y, p.z, color='C1')
+    for i in points:
+        for p in i:
+            ax.scatter(p.x, p.y, p.z, color='C1')
 
-    # Draw the cubes
-    recursiveDrawCube(node, ax)
-    # recursiveDrawCube(node[1], ax)
+    if node_toggle == True:
+        # Draw the cubes
+        recursiveDrawCube(node[0], ax)
+        recursiveDrawCube(node[1], ax)
 
-    # Set limits and aspect ratio
-    ax.set_xlim([0, 1])
-    ax.set_ylim([0, 1])
-    ax.set_zlim([0, 1])
-    ax.set_box_aspect([1, 1, 1])  # Aspect ratio is 1:1:1
+        # Set limits and aspect ratio
+        ax.set_xlim([0, 1])
+        ax.set_ylim([0,1])
+        ax.set_zlim([0, 1])
+        ax.set_box_aspect([1,1,1])  # Aspect ratio is 1:1:1
 
-    plt.show()
+    plt.savefig('frame.png')
+    plt.close()
 
 
 def recursiveDrawCube(node: Node, ax):
@@ -57,9 +61,9 @@ def drawCube(node: Node, ax):
     # Calculate the vertices of the cube
     r = side_length
     cx, cy, cz = center
-    cx = cx / (2 ** node.depth)
-    cy = cy / (2 ** node.depth)
-    cz = cz / (2 ** node.depth)
+    cx = cx/(2**node.depth)
+    cy = cy/(2**node.depth)
+    cz = cz/(2**node.depth)
 
     # Calculate the vertices of the cube
     points = np.array([[cx - r, cy - r, cz - r],  # 0

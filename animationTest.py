@@ -3,23 +3,27 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from functools import partial
 
-fig, ax = plt.subplots()
-line1, = ax.plot([], [], 'ro')
+def saveFrame():
+    plot((points_1, points_2), (node_1, node_2))
 
-def init():
-    ax.set_xlim(0, 2*np.pi)
-    ax.set_ylim(-1, 1)
-    return line1,
+# fig, ax = plt.subplots()
+# line1, = ax.plot([], [], 'ro')
 
-def update(frame, ln, x, y, step):
-    x.append(frame)
-    y.append(np.sin(frame))
-    ln.set_data(x, y)
-    return ln,
+# def init():
+#     ax.set_xlim([0, 1])
+#     ax.set_ylim([0, 1])
+#     ax.set_zlim([0, 1])
+#     return line1,
 
-ani = FuncAnimation(
-    fig, partial(update, ln=line1, x=[], y=[], step=0),
-    frames=np.linspace(0, 2*np.pi, 128),
-    init_func=init, blit=True)
+# def update(frame, ln, x, y):
+#     x.append(frame)
+#     y.append(np.sin(frame))
+#     ln.set_data(x, y)
+#     return ln,
 
-plt.show()
+# ani = FuncAnimation(
+#     fig, partial(update, ln=line1, x=[], y=[]),
+#     frames=np.linspace(0, 2*np.pi, 128),
+#     init_func=init, blit=True)
+
+# plt.show()

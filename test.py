@@ -27,7 +27,7 @@ def createAndPlace(n):
     points_all = np.concatenate((points, points2))
 
 
-    node = Node(.5,(1,1,1),1)
+    node = Node(1,(1,1,1),1)
 
     for i in range(len(points_all)):
         node.add_point(points_all[i])
@@ -47,7 +47,9 @@ def main():
         breadth_first_force_eval(point, node, 1)
         print(point.acc)
 
-    time = np.linspace(0, 100, 1)
+    time = np.linspace(0, 3, 1)
+    for frame in time:
+        plot((points), (node), node_toggle=False)
 
 
 main()
