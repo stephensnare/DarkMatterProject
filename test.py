@@ -21,21 +21,24 @@ from CoM import CoM_tracker
 from depthFirst import depthFirst as df
 
 ### Create and Place Points ###
-def createAndPlace(loc):
-    points = gp.generate(32, loc)
+def createAndPlace(n):
+    points = gp.generate(n, 0)
+    points2 = gp.generate(n, 1)
 
-    node = Node(.5,(1,1,1),1)
+    points_all = np.concatenate((points, points2))
 
-    for i in range(len(points)):
-        node.add_point(points[i])
 
-    return points, node
+    node = Node(1,(1,1,1),1)
+
+    for i in range(len(points_all)):
+        node.add_point(points_all[i])
+
+    return points_all, node
 
 
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    points_1, node_1 = createAndPlace(0)
-    points_2, node_2 = createAndPlace(1)
+    points, node = createAndPlace(15)
 
     # CoM_tracker(node)
     # allDepths, maxDepth = df(node)
