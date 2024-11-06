@@ -11,12 +11,14 @@
         # git restore [filepath to the file you want to restore]
 
 import generatePoints as gp
+import numpy as np
+# import animationTest as animate
+
 from classes import *
 from classes.node import Node
 from plotter import plot
 from CoM import CoM_tracker
 from depthFirst import depthFirst as df
-import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(loc):
@@ -38,9 +40,10 @@ def main():
     # CoM_tracker(node)
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
-    plot((points_1, points_2), (node_1, node_2))
 
-    time = np.linspace(0, 100, 1)
+    time = np.linspace(0, 3, 1)
+    for frame in time:
+        plot((points_1, points_2), (node_1, node_2), node_toggle=False)
 
 
 main()
