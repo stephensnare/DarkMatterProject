@@ -12,6 +12,7 @@
 
 import generatePoints as gp
 import numpy as np
+import matplotlib.pyplot as plt
 # import animationTest as animate
 
 from classes import *
@@ -22,6 +23,7 @@ from depthFirst import depthFirst as df
 
 ### Create and Place Points ###
 def createAndPlace(n):
+    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points = gp.generate(n, 0)
     points2 = gp.generate(n, 1)
 
@@ -37,16 +39,14 @@ def createAndPlace(n):
 
 
 def main():
-    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points, node = createAndPlace(15)
 
     # CoM_tracker(node)
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
 
-    time = np.linspace(0, 3, 1)
-    for frame in time:
-        plot((points_1, points_2), (node_1, node_2), node_toggle=False)
+    for frame in range(0, 3):
+        plot(points, node, frame, node_toggle=False)
 
 
 main()
