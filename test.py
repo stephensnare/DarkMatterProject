@@ -47,7 +47,7 @@ def createPoints(n):
 
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    numpoints = 100
+    numpoints = 50
     theta = 1
     time = 3
     timestep = 0.1
