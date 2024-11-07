@@ -39,17 +39,20 @@ def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points, node = createAndPlace(15)
 
-    # CoM_tracker(node)
+    CoM_tracker(node)
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
     plot(points, node)
-    for point in node.psuedoPoint.pointPointers:
+    for point in points:
         breadth_first_force_eval(point, node, 1)
         print(point.acc)
 
+
+
+
     time = np.linspace(0, 3, 1)
     for frame in time:
-        plot((points), (node), node_toggle=False)
+        plot((points), (node), node_toggle=True)
 
 
 main()

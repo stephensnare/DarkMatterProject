@@ -13,14 +13,13 @@ def plot(points, node, node_toggle:bool=False):
     ax = fig.add_subplot(111, projection='3d')
 
     # Plot the points
-    for i in points:
-        for p in i:
-            ax.scatter(p.x, p.y, p.z, color='C1')
+    for p in points:
+
+        ax.scatter(p.x, p.y, p.z, color='C1')
 
     if node_toggle == True:
         # Draw the cubes
-        recursiveDrawCube(node[0], ax)
-        recursiveDrawCube(node[1], ax)
+        recursiveDrawCube(node, ax)
 
         # Set limits and aspect ratio
         ax.set_xlim([0, 1])

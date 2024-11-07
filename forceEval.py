@@ -9,7 +9,9 @@ import math
 from classes.node import Node
 from classes.point import Point
 
-G = 6.67 * 10 ** -11
+# G = 6.67 * 10 ** -11
+# WE KNOW THAT G IS NOT 0.001, HOWEVER, WE NEEDED LARGER FORCES TO SEE ACCELLERATIONS IN REAL TIME
+G = 0.001
 
 
 # theta is side length of node over distance from center of mass
@@ -28,12 +30,15 @@ def passes_theta(point: Point, child: Node, theta):
         psuedo_y = psuedo_point.y
         psuedo_z = psuedo_point.z
 
-        rx = abs(psuedo_x - px)
-        ry = abs(psuedo_y - py)
-        rz = abs(psuedo_z - pz)
+        rx = (psuedo_x - px)
+        ry = (psuedo_y - py)
+        rz = (psuedo_z - pz)
 
         l = child.side_length
         d = math.sqrt(rx ** 2 + ry ** 2 + rz ** 2)
+
+        if d == 0:
+            return False, False, False, False
 
         if l / d > theta:
             return False, False, False, False
