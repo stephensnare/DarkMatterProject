@@ -39,6 +39,10 @@ def createAndPlace(n):
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points, node = createAndPlace(15)
+    numpoints = 30
+    theta = 0
+    time = 3
+    timestep = 0.5
 
     CoM_tracker(node)
     # allDepths, maxDepth = df(node)
@@ -48,7 +52,7 @@ def main():
         breadth_first_force_eval(point, node, 1)
         print(point.acc)
 
-    for frame in range(0, 3):
+    for frame in range(0, time):
         plot(points, node, frame, node_toggle=False)
 
 
