@@ -46,7 +46,7 @@ def main():
     points, node = createAndPlace(numpoints//2)
 
     CoM_tracker(node)
-    plot(points, node)
+    plot(points, node,0)
     for point in points:
         breadth_first_force_eval(point, node, theta)
 
