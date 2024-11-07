@@ -17,6 +17,7 @@ class Point(object):
 
         self.acc = [0,0,0]
 
+
     def update_params(self, dt: float):
         self.x += dt * self.velx + dt**2 * self.acc[0]
         self.y += dt * self.vely + dt**2 * self.acc[1]
