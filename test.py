@@ -68,7 +68,7 @@ def main():
     node = placePoints(points, None)
     # points, node = createAndPlace(numpoints//2)
 
-    for frame in range(0, time, timestep):
+    for frame in range(0, time):
         for point in node.psuedoPoint.pointPointers:
             breadth_first_force_eval(point, node, 1)
             # print(point.acc)
