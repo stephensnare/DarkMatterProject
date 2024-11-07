@@ -38,22 +38,27 @@ def createAndPlace(n):
 
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    points, node = createAndPlace(15)
     numpoints = 30
-    theta = 0
+    theta = .5
     time = 3
     timestep = 0.5
+    node_toggle = False
+    points, node = createAndPlace(numpoints//2)
 
     CoM_tracker(node)
-    # allDepths, maxDepth = df(node)
-    # print(maxDepth)
     plot(points, node)
     for point in points:
-        breadth_first_force_eval(point, node, 1)
-        print(point.acc)
+        breadth_first_force_eval(point, node, theta)
 
     for frame in range(0, time):
-        plot(points, node, frame, node_toggle=False)
+        plot(points, node, frame, node_toggle)
+
+    for frame in range(0, time):
+        for point in node.psuedoPoint.pointPointers:
+            breadth_first_force_eval(point, node, 1)
+            # print(point.acc)
+
+        plot(points, node, frame, node_toggle)
 
 
 main()
