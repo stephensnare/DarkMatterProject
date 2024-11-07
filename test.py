@@ -22,10 +22,12 @@ import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(n):
+    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points = gp.generate(n, 0)
     points2 = gp.generate(n, 1)
 
     points_all = np.concatenate((points, points2))
+
 
     node = Node(1,(1,1,1),1)
 
@@ -43,39 +45,33 @@ def createPoints(n):
     return points_all
 
 
-def placePoints(points, node):
-    if node == None:
-        node = Node(1, (1,1,1), 1)
-    else:
-        # Burn the node
-        node = Node(1, (1,1,1), 1)
-
-    for i in range(len(points)):
-        node.add_point(points[i])
-
-    return node
-
-
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    numpoints = 30
+    numpoints = 100
     theta = .5
     time = 3
-    timestep = 0.5
+    timestep = 0.1
     node_toggle = False
     points = createPoints(numpoints//2)
-    node = placePoints(points, None)
+    node = Node(1, (1,1,1), 1)
+    node.placePoints(points)
     # points, node = createAndPlace(numpoints//2)
 
-    for frame in range(0, time, timestep):
-        for point in points:
+    for frame in range(0, int(time/timestep)):
+        if frame == 0:
+            plot(points, node, frame * timestep, node_toggle)
+        else:
             CoM_tracker(node)
-            breadth_first_force_eval(point, node, 1)
-            point.update_params(timestep)
+            for point in points:
+                breadth_first_force_eval(point, node, 1)
+            node.burn_tree()
+            for point in points:
+                point.update_params(timestep)
+            node = Node(1, (1,1,1), 1)
+            node.placePoints(points)
+            plot(points, node, frame * timestep, node_toggle)
             
-            # print(point.acc)
-
-        plot(points, node, frame, node_toggle)
+            
 
 
 main()
