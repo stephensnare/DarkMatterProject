@@ -61,23 +61,23 @@ def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     numpoints = 30
     theta = .5
-    time = 3
+    time = 3.0
     timestep = 0.5
     node_toggle = False
     points = createPoints(numpoints//2)
     node = placePoints(points, None)
     # points, node = createAndPlace(numpoints//2)
 
-    for frame in range(0, time, timestep):
+    for frame in range(0, int(time/timestep)):
         if frame == 0:
-            plot(points, node, frame, node_toggle)
+            plot(points, node, frame*timestep, node_toggle)
         else:
             for point in node.psuedoPoint.pointPointers:
                 CoM_tracker(node)
                 breadth_first_force_eval(point, node, 1)
                 # print(point.acc)
 
-            plot(points, node, frame, node_toggle)
+            plot(points, node, frame*timestep, node_toggle)
 
 
 main()
