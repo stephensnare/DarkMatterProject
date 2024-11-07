@@ -127,5 +127,5 @@ class Node(object):
 
     def placePoints(self, points):
         for p in points:
-            if 0 < p.x < 1 & 0 < p.y < 1 & 0 < p.z < 1:
+            if 0 < p.x < 1 and 0 < p.y < 1 and 0 < p.z < 1:
                 self.add_point(p)

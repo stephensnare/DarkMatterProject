@@ -33,9 +33,9 @@ def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     numpoints = 50
     theta = 1
-    time = 10
-    timestep = 0.1
-    node_toggle = True
+    time = 5
+    timestep = 0.02
+    node_toggle = False
     points = createPoints(numpoints//2)
     node = Node(1, (1,1,1), 1)
     node.placePoints(points)
@@ -43,8 +43,10 @@ def main():
 
     for frame in range(0, int(time/timestep)):
         if frame == 0:
-            plot(points, node, frame * timestep, node_toggle)
+            plot(points, node, frame, node_toggle)
+            print("doin frame 0")
         else:
+            print(f'doin frame {frame}')
             CoM_tracker(node)
             for point in points:
                 breadth_first_force_eval(point, node, theta)
@@ -53,7 +55,7 @@ def main():
                 point.update_params(timestep)
             node = Node(1, (1,1,1), 1)
             node.placePoints(points)
-            plot(points, node, frame * timestep, node_toggle)
+            plot(points, node, frame, node_toggle)
             
             
 
