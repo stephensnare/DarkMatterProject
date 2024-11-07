@@ -41,15 +41,16 @@ def main():
     theta = 0
     time = 3
     timestep = 0.5
+    node_toggle = False
 
     points, node = createAndPlace(numpoints/2)
-    
-    for point in node.psuedoPoint.pointPointers:
-        breadth_first_force_eval(point, node, 1)
-        print(point.acc)
 
     for frame in range(0, time):
-        plot(points, node, frame, node_toggle=False)
+        for point in node.psuedoPoint.pointPointers:
+            breadth_first_force_eval(point, node, 1)
+            # print(point.acc)
+            
+        plot(points, node, frame, node_toggle)
 
 
 main()
