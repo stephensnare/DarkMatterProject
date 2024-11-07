@@ -11,15 +11,13 @@
         # git restore [filepath to the file you want to restore]
 
 import generatePoints as gp
-import numpy as np
-import matplotlib.pyplot as plt
-# import animationTest as animate
-
 from classes import *
 from classes.node import Node
+from forceEval import breadth_first_force_eval
 from plotter import plot
 from CoM import CoM_tracker
 from depthFirst import depthFirst as df
+import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(n):
@@ -44,6 +42,10 @@ def main():
     # CoM_tracker(node)
     # allDepths, maxDepth = df(node)
     # print(maxDepth)
+    # plot(points, node)
+    for point in node.psuedoPoint.pointPointers:
+        breadth_first_force_eval(point, node, 1)
+        print(point.acc)
 
     for frame in range(0, 3):
         plot(points, node, frame, node_toggle=False)
