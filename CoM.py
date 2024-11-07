@@ -46,8 +46,6 @@ def CoM_tracker(node):
             zp /= sum(m)
 
             node.psuedoPoint = PsuedoPoint(xp,yp,zp,sum(m))
-
-        print(node.depth)
         return
 
 

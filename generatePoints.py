@@ -7,7 +7,7 @@ def generate(numPoints, loc):
 
     center = [0.2, 0.2, 0.2] if loc == 0 else [0.8, 0.8, 0.8]
     spread = [0.05, 0.05, 0.05] if loc == 0 else [0.05, 0.05, 0.05]
-    vel = [0.05, 0.05, 0.05] if loc == 0 else [-0.05, -0.05, -0.05]
+    vel = [0.01, 0.01, 0.01] if loc == 0 else [-0.01, -0.01, -0.01]
 
     for i in range(numPoints):
         x = np.random.normal(center[0], spread[0])

@@ -21,22 +21,6 @@ from depthFirst import depthFirst as df
 import numpy as np
 
 ### Create and Place Points ###
-def createAndPlace(n):
-    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    points = gp.generate(n, 0)
-    points2 = gp.generate(n, 1)
-
-    points_all = np.concatenate((points, points2))
-
-
-    node = Node(1,(1,1,1),1)
-
-    for i in range(len(points_all)):
-        node.add_point(points_all[i])
-
-    return points_all, node
-
-
 def createPoints(n):
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points1 = gp.generate(n, 0)
@@ -49,9 +33,9 @@ def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     numpoints = 50
     theta = 1
-    time = 3
+    time = 10
     timestep = 0.1
-    node_toggle = False
+    node_toggle = True
     points = createPoints(numpoints//2)
     node = Node(1, (1,1,1), 1)
     node.placePoints(points)
