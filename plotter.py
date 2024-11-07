@@ -14,7 +14,7 @@ def plot(points, node, frame, node_toggle:bool=False):
 
     # Plot the points
     for i in points:
-        ax.scatter(i.x, i.y, i.z, color='C1')
+        ax.scatter(i.x, i.y, i.z, color='C1', s=5)
 
     if node_toggle == True:
         # Draw the cubes
