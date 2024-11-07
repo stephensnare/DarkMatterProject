@@ -13,6 +13,7 @@
 import generatePoints as gp
 from classes import *
 from classes.node import Node
+from classes.point import Point
 from forceEval import breadth_first_force_eval
 from plotter import plot
 from CoM import CoM_tracker
@@ -44,20 +45,19 @@ def main():
     timestep = 0.5
     node_toggle = False
     points, node = createAndPlace(numpoints//2)
+    # plot(points, node)
+    
 
-    CoM_tracker(node)
-    plot(points, node)
-    for point in points:
-        breadth_first_force_eval(point, node, theta)
+    # for frame in range(0, time):
+    #     plot(points, node, frame, node_toggle)
+        
+
 
     for frame in range(0, time):
-        plot(points, node, frame, node_toggle)
-
-    for frame in range(0, time):
-        for point in node.psuedoPoint.pointPointers:
-            breadth_first_force_eval(point, node, 1)
-            # print(point.acc)
-
+        CoM_tracker(node)
+        for point in points:
+            breadth_first_force_eval(point, node, theta)
+            point.update_params(frame)
         plot(points, node, frame, node_toggle)
 
 
