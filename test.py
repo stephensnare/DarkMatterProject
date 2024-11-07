@@ -21,7 +21,6 @@ import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(n):
-    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points = gp.generate(n, 0)
     points2 = gp.generate(n, 1)
 
@@ -35,6 +34,27 @@ def createAndPlace(n):
     return points_all, node
 
 
+def createPoints(n):
+    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
+    points1 = gp.generate(n, 0)
+    points2 = gp.generate(n, 1)
+    points_all = np.concatenate((points1, points2))
+    return points_all
+
+
+def placePoints(points, node):
+    if node == None:
+        node = Node(1, (1,1,1), 1)
+    else:
+        # Burn the node
+        node = Node(1, (1,1,1), 1)
+
+    for i in range(len(points)):
+        node.add_point(points[i])
+
+    return node
+
+
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     numpoints = 30
@@ -42,17 +62,11 @@ def main():
     time = 3
     timestep = 0.5
     node_toggle = False
-    points, node = createAndPlace(numpoints//2)
+    points = createPoints(numpoints//2)
+    node = placePoints(points, None)
+    # points, node = createAndPlace(numpoints//2)
 
-    CoM_tracker(node)
-    plot(points, node)
-    for point in points:
-        breadth_first_force_eval(point, node, theta)
-
-    for frame in range(0, time):
-        plot(points, node, frame, node_toggle)
-
-    for frame in range(0, time):
+    for frame in range(0, time, timestep):
         for point in node.psuedoPoint.pointPointers:
             breadth_first_force_eval(point, node, 1)
             # print(point.acc)
