@@ -15,15 +15,15 @@ def plot(points, node, frame, node_toggle:bool=False):
     # Plot the points
     for i in points:
         ax.scatter(i.x, i.y, i.z, color='C1', s=5)
-
+    ax.set_xlim([0, 1])
+    ax.set_ylim([0,1])
+    ax.set_zlim([0, 1])
     if node_toggle == True:
         # Draw the cubes
         recursiveDrawCube(node, ax)
 
         # Set limits and aspect ratio
-        ax.set_xlim([0, 1])
-        ax.set_ylim([0,1])
-        ax.set_zlim([0, 1])
+        
         ax.set_box_aspect([1,1,1])  # Aspect ratio is 1:1:1
 
     plt.savefig(f'frame{frame}.png')
