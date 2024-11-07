@@ -62,7 +62,8 @@ class Node(object):
                 self.center[2] / 2 ** self.depth:
             self.trb.add_point(point)
             self.trb.parent = self
-        elif point.x <= self.center[0] / 2 ** self.depth and point.y <= self.center[1] / 2 ** self.depth and point.z >= \                self.center[2] / 2 ** self.depth:
+        elif point.x <= self.center[0] / 2 ** self.depth and point.y <= self.center[1] / 2 ** self.depth and point.z >= \
+                self.center[2] / 2 ** self.depth:
             self.blf.add_point(point)
             self.blf.parent = self
         elif point.x <= self.center[0] / 2 ** self.depth and point.y >= self.center[1] / 2 ** self.depth and point.z >= \

@@ -48,7 +48,7 @@ def createPoints(n):
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     numpoints = 100
-    theta = .5
+    theta = 1
     time = 3
     timestep = 0.1
     node_toggle = False
@@ -63,7 +63,7 @@ def main():
         else:
             CoM_tracker(node)
             for point in points:
-                breadth_first_force_eval(point, node, 1)
+                breadth_first_force_eval(point, node, theta)
             node.burn_tree()
             for point in points:
                 point.update_params(timestep)
