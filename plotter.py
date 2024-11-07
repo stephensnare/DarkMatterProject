@@ -8,14 +8,13 @@ import numpy as np
 
 ### 3D Plotting ###
 # node_toggle = False, nodes are disabled
-def plot(points, node, node_toggle:bool=False):
+def plot(points, node, frame, node_toggle:bool=False):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
     # Plot the points
-    for p in points:
-
-        ax.scatter(p.x, p.y, p.z, color='C1')
+    for i in points:
+        ax.scatter(i.x, i.y, i.z, color='C1')
 
     if node_toggle == True:
         # Draw the cubes
@@ -27,7 +26,7 @@ def plot(points, node, node_toggle:bool=False):
         ax.set_zlim([0, 1])
         ax.set_box_aspect([1,1,1])  # Aspect ratio is 1:1:1
 
-    plt.savefig('frame.png')
+    plt.savefig(f'frame{frame}.png')
     plt.close()
 
 

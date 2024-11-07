@@ -21,6 +21,7 @@ import numpy as np
 
 ### Create and Place Points ###
 def createAndPlace(n):
+    # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
     points = gp.generate(n, 0)
     points2 = gp.generate(n, 1)
 
@@ -47,12 +48,8 @@ def main():
         breadth_first_force_eval(point, node, 1)
         print(point.acc)
 
-
-
-
-    time = np.linspace(0, 3, 1)
-    for frame in time:
-        plot((points), (node), node_toggle=True)
+    for frame in range(0, 3):
+        plot(points, node, frame, node_toggle=False)
 
 
 main()
