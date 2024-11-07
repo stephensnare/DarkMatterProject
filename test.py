@@ -27,7 +27,6 @@ def createAndPlace(n):
 
     points_all = np.concatenate((points, points2))
 
-
     node = Node(1,(1,1,1),1)
 
     for i in range(len(points_all)):
@@ -49,7 +48,7 @@ def main():
         for point in node.psuedoPoint.pointPointers:
             breadth_first_force_eval(point, node, 1)
             # print(point.acc)
-            
+
         plot(points, node, frame, node_toggle)
 
 
