@@ -16,3 +16,17 @@ class Point(object):
         self.velmag = np.sqrt(self.velx**2 + self.vely**2 + self.velz**2)
 
         self.acc = [0,0,0]
+
+
+    def update_params(self, dt: float):
+        self.x += dt * self.velx + dt**2 * self.acc[0]
+        self.y += dt * self.vely + dt**2 * self.acc[1]
+        self.z += dt * self.velz + dt**2 * self.acc[2]
+
+        self.velx += dt * self.acc[0]
+        self.vely += dt * self.acc[1]
+        self.velz += dt * self.acc[2]
+
+        self.vel = [self.velx, self.vely, self.velz]
+        
+        self.velmag = np.sqrt(self.velx**2 + self.vely**2 + self.velz**2)
