@@ -15,36 +15,51 @@ G = 0.001
 
 
 # theta is side length of node over distance from center of mass
+def dl_calc(point: Point, child: Node):
+    psuedo_point = child.psuedoPoint
+    px = point.x
+    py = point.y
+    pz = point.z
 
+    psuedo_x = psuedo_point.x
+    psuedo_y = psuedo_point.y
+    psuedo_z = psuedo_point.z
+
+    rx = (psuedo_x - px)
+    ry = (psuedo_y - py)
+    rz = (psuedo_z - pz)
+
+    l = child.side_length
+    d = math.sqrt(rx ** 2 + ry ** 2 + rz ** 2)
+    return d, l, rx, ry, rz
 
 def passes_theta(point: Point, child: Node, theta):
     if child:
-        if point in child.psuedoPoint.pointPointers:
+        if child.population == 1:
+            if point in child.psuedoPoint.pointPointers:
+                # print('1: Self Force')
+                return True, True, True, True
+            else: 
+                # print('1: Single pop, non-self')
+                d, l, rx, ry, rz = dl_calc(point, child)
+                return d, rx, ry, rz
+        elif point in child.psuedoPoint.pointPointers:
+            # print('1: Point in cell')
             return False, False, False, False
-        psuedo_point = child.psuedoPoint
-        px = point.x
-        py = point.y
-        pz = point.z
-
-        psuedo_x = psuedo_point.x
-        psuedo_y = psuedo_point.y
-        psuedo_z = psuedo_point.z
-
-        rx = (psuedo_x - px)
-        ry = (psuedo_y - py)
-        rz = (psuedo_z - pz)
-
-        l = child.side_length
-        d = math.sqrt(rx ** 2 + ry ** 2 + rz ** 2)
+        
+        d, l, rx, ry, rz  = dl_calc(point, child)
 
         if d == 0:
-            return False, False, False, False
+            # print('1: Distance equaled zero???')
+            return True, True, True, True
 
         if l / d > theta:
+            # print('1: Failed Theta parameter')
             return False, False, False, False
-
+        # print('1: including calculation')
         return d, rx, ry, rz
     else:
+        # print('1: Node doesnt exist')
         return False, False, False, False
 
 
@@ -60,9 +75,16 @@ def breadth_first_force_eval(point: Point, node: Node, theta):
                     d, rx, ry, rz = passes_theta(point, child, theta)
 
                     if d == False:
+                        # print('2 lets look at children')
                         queue.append(child)
+                        pass
+                    elif d == True:
+                        # print('2 dead end')
+                        pass
                     else:
+                        # print('2 poi detected')
                         poi.append([child.psuedoPoint, rx, ry, rz, d])
+                        pass
 
     x_force = 0
     y_force = 0

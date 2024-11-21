@@ -100,5 +100,31 @@ def main():
 
     plt.show()
 
+def theta_main():
+    numpoints = 100
+    theta = [0, 1e-3, 1e-2, 1e-1, 1]
+    maxtime = 5
 
-main()
+    timestep = .1
+    node_toggle = False
+    # points = createPoints(numpoints//2)
+    # node = Node(1, (1,1,1), 1)
+    # node.placePoints(points)
+    # points, node = createAndPlace(numpoints//2)
+    # calculate_frames(time,timestep,points,node_toggle,theta,node)
+    t0_times = []
+    t1_times = []
+            
+    for the in theta:
+        print(f'calculating keplar theta = {the}')
+        points = createPoints(numpoints // 2)
+        node = Node(1, (1, 1, 1), 1)
+        node.placePoints(points)
+        start_time = time.perf_counter()
+        calculate_frames(maxtime, timestep, points, node_toggle, the, node)
+        total_time = time.perf_counter() - start_time
+        t0_times.append(total_time)
+
+
+theta_main()
+# main()
