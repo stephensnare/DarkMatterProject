@@ -53,25 +53,45 @@ def calculate_frames(time,timestep,points,node_toggle,theta,node):
 
 def main():
     # Location 0 is [0.2, 0.2,  0.2], location 1 = [0.8, 0.8, 0.8]
-    numpoints = [20,30,40,50,60,70,80,90,100,120,140,160,180,200,220,240,260,280,300,350,400,500]
-    maxtime = 10
+    numpoints = [20,30,40,50,60,70,80,90,100,120,140,160,180,200,220,240,260,280,300,350]
+    maxtime = 0.06
 
-    timestep = .05
+    timestep = .02
     node_toggle = False
-    points = createPoints(100//2)
-    node = Node(1, (1,1,1), 1)
-    node.placePoints(points)
+    # points = createPoints(numpoints//2)
+    # node = Node(1, (1,1,1), 1)
+    # node.placePoints(points)
+    # points, node = createAndPlace(numpoints//2)
+    # calculate_frames(time,timestep,points,node_toggle,theta,node)
+    t0_times = []
+    t1_times = []
+            
+    for num in numpoints:
+        print(f'calculating keplar n={num} ')
+        points = createPoints(num // 2)
+        node = Node(1, (1, 1, 1), 1)
+        node.placePoints(points)
+        start_time = time.perf_counter()
+        calculate_frames(maxtime, timestep, points, node_toggle, 0, node)
+        total_time = time.perf_counter() - start_time
+        t0_times.append(total_time)
 
-    calculate_frames(maxtime,timestep,points,node_toggle,0,node)
 
+    for num in numpoints:
+        print(f'calculating BH n={num} ')
+        points = createPoints(num // 2)
+        node = Node(1, (1, 1, 1), 1)
+        node.placePoints(points)
 
-
+        start_time = time.perf_counter()
+        calculate_frames(maxtime, timestep, points, node_toggle, 1, node)
+        total_time = time.perf_counter() - start_time
 
     ########### TIME COMPLEXITY ANALYSIS #############
 
     # t0_times = []
     # t1_times = []
-            
+
     # for num in numpoints:
     #     print(f'calculating keplar n={num} ')
     #     points = createPoints(num // 2)
@@ -145,5 +165,30 @@ def main():
     # plt.plot(thetas,errors)
     # plt.scatter(thetas,errors)
     # plt.show()
+def error_analysis():
+    numpoints = 100
+    theta = [0, 1e-3, 1e-2, 1e-1, 1]
+    maxtime = 5
+    timestep = .1
+    node_toggle = False
+    # points = createPoints(numpoints//2)
+    # node = Node(1, (1,1,1), 1)
+    # node.placePoints(points)
+    # points, node = createAndPlace(numpoints//2)
+    # calculate_frames(time,timestep,points,node_toggle,theta,node)
+    t0_times = []
+    t1_times = []
 
+    for the in theta:
+        print(f'calculating keplar theta = {the}')
+        points = createPoints(numpoints // 2)
+        node = Node(1, (1, 1, 1), 1)
+        node.placePoints(points)
+        start_time = time.perf_counter()
+        calculate_frames(maxtime, timestep, points, node_toggle, the, node)
+        total_time = time.perf_counter() - start_time
+        t0_times.append(total_time)
+
+
+error_analysis()
 main()
